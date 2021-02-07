@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 
-const defaultState = {
-    click: false
-}
+// const defaultState = {
+//     click: false
+// }
 
 
 

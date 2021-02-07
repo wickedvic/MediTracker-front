@@ -6,12 +6,13 @@ import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { createStore } from "redux";
 import rootReducer from "./redux/rootReducer";
-import { Provider } from 'react-redux'
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#CCCCCC",
+      main: "#81ffe6",
     },
     secondary: {
       main: "#0f7986",
@@ -32,7 +33,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Provider>
     </ThemeProvider>
   </React.StrictMode>,
