@@ -5,10 +5,13 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "./DocLoginStyles";
+import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "@material-ui/core";
 import { Component } from "react";
 import { Button } from "@material-ui/core";
-// import CardActions from '@material-ui/core/CardActions';
+import { connect } from "react-redux";
+import { docLoginAction } from "../../redux/actions";
+import { withRouter } from 'react-router-dom';
 
 class DocLogin extends Component {
   state = {
@@ -22,38 +25,48 @@ class DocLogin extends Component {
     });
   };
 
-  submitHandler = () => {
-    this.props.loginHandler(this.state);
+  submitHandler = (e) => {
+    e.preventDefault()
+    this.props.doctorLogin(this.state);
+    this.props.history.push("/allpatients")
   };
   render() {
+    const { classes } = this.props;
+    console.log(this.props.doctor);
     return (
       <div>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Grid container spacing={3} align="center" justify="center">
               <Grid item xs={6}>
-                <Paper>
-                  {/* className={classes.loginBox} */}
-                  <Typography>
-                    <Card>
-                      {/* className={classes.root} */}
+                <Paper className={classes.loginBox}>
+                  <Typography component={"span"}>
+                    <Card className={classes.root}>
                       <CardContent>
                         <h3>Log In: Doctor </h3>
-                        <input
-                          type="text"
-                          onChange={this.formEdit}
-                          name="email"
-                          value={this.state.email}
-                        />
-                        <input
-                          type="password"
-                          onChange={this.formEdit}
-                          name="password"
-                          value={this.state.password}
-                        />
-                        <Button onClick={this.submitHandler}>Log in</Button>
-                        {/* <TextField onChange={this.formEdit} name={email} className={classes.textField} label="email"/>
-                                <TextField onChange={this.formEdit} className={classes.textField} name={password} type="password" label="password" ></TextField> */}
+                        <form>
+                          <TextField
+                            onChange={this.formEdit}
+                            className={classes.textField}
+                            value={this.state.email}
+                            name="email"
+                            type="text"
+                            label="email"
+                          />
+                          <TextField
+                            onChange={this.formEdit}
+                            className={classes.textField}
+                            value={this.state.password}
+                            name="password"
+                            type="password"
+                            label="password"
+                          ></TextField>
+                          <br />
+                          <br />
+                          <Button type="submit" onClick={this.submitHandler}>
+                            Log in
+                          </Button>
+                        </form>
                       </CardContent>
                     </Card>
                   </Typography>
@@ -66,4 +79,12 @@ class DocLogin extends Component {
     );
   }
 }
-export default DocLogin;
+const msp = (state) => {
+  return { doctor: state.doctor };
+};
+
+const mdp = (dispatch) => {
+  return { doctorLogin: (doc) => dispatch(docLoginAction(doc, dispatch)) };
+};
+
+export default connect(msp, mdp)(withStyles(useStyles, { withTheme: true })(withRouter(DocLogin)))

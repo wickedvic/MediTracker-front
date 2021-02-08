@@ -24,14 +24,20 @@ const NavBar = (props) => {
   const redirectHome = () => {
     history.push("/")
   }
+
+  const clearUser = () => {
+    props.logout()
+  }
+
     return (
       <AppBar position="static" color="primary" className={classes.navMargin}>
         <Toolbar >
         <img onClick={redirectHome} className={classes.img} src="https://i.imgur.com/SF5Sczc.png" alt="doc-img"/>
-          <Typography className={classes.title} >{props.user === "doctor" ? <Button color="inherit" onClick={clickHandler}>My Patients</Button> : null}
+        <Typography className={classes.title} >{props.doctor ? <Button color="inherit" onClick={clickHandler}>My Patients</Button> : null}
+
             {/* MEDITRACKER */}
           </Typography >
-          {localStorage.getItem("user") ? <Button color="inherit">Logout</Button> : null}
+          {props.doctor || props.patient ? <Button onClick={clearUser} color="inherit">Logout</Button> : null}
         </Toolbar>
       </AppBar>
     )
@@ -39,7 +45,13 @@ const NavBar = (props) => {
 
 const msp = (state) => {
   // console.log("Current Redux State", state)
-  return {user: state.user}
+  return {doctor: state.doctor, patient: state.patient}
 }
 
-export default connect(msp)(NavBar)
+const mdp = (dispatch) => {
+  return { logout: () => dispatch({type: "LOGOUT"})}
+}
+
+
+
+export default connect(msp, mdp)(NavBar)

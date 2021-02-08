@@ -1,13 +1,14 @@
 import React from 'react'
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import LoginContainer from '../LoginContainer/LoginContainer'
-import NavBar from '../../components/NavBar/NavBar'
+// import LoginContainer from '../LoginContainer/LoginContainer'
+// import NavBar from '../../components/NavBar/NavBar'
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import useStyles from './DoctorContainerStyles'
+import { connect } from 'react-redux'
 
 
 const DoctorLanding = (props) => {
@@ -47,5 +48,9 @@ const DoctorLanding = (props) => {
     )
 }
 
+const msp = (state) => {
+    return {doctor: state.doctor}
+}
 
-export default DoctorLanding 
+
+export default connect(msp)(DoctorLanding) 

@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
-import { userReducer } from './reducer/userReducer'
+import { doctorLoginReducer } from './reducer/doctorLoginReducer'
+import { patLoginReducer } from './reducer/patientLoginReducer'
 
 const defaultState = {
   user: localStorage.getItem("user"),
@@ -7,7 +8,8 @@ const defaultState = {
 
 
 const rootReducer = combineReducers({
-    user: userReducer
+    doctor: doctorLoginReducer,
+    patient: patLoginReducer
 });
 
 export default rootReducer;

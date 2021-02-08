@@ -5,15 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import theme from './IndexUI'
 import { ThemeProvider } from '@material-ui/core/styles';
-import { createStore } from "redux";
+import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from "./redux/rootReducer";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import thunk from 'redux-thunk';
+import { applyMiddleware, createStore } from 'redux';
 
 
 
-const store = createStore(rootReducer);
-console.log("Store: ", store.getState());
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)) )
+// console.log("Store: ", store.getState());
 
 ReactDOM.render(
   <React.StrictMode>

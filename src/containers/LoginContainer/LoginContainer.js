@@ -11,14 +11,10 @@ const LoginContainer = (props) => {
     const history = useHistory();
 
     const docClick = () => {
-        localStorage.setItem("user", "doctor")
-        props.addDocUser()
         history.push("/doctorlogin")
     }
 
     const patientClick = () => {
-        localStorage.setItem("user", "patient")
-        props.addPatUser()
         history.push("/patientlogin")
     }
 
@@ -32,11 +28,4 @@ const LoginContainer = (props) => {
     )
 }
 
-const mdp = (dispatch) => {
-    return {
-        addDocUser: () => dispatch({type: "docuser"}),
-        addPatUser: () => dispatch({type: "patuser"})
-    }
-  }
-
-  export default connect(null, mdp)(LoginContainer) 
+export default LoginContainer 
