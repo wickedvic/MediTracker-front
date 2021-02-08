@@ -5,11 +5,11 @@ const defaultState = {
 function userReducer(state=defaultState.user, action) {
     switch (action.type) {
         case "docuser":
-            console.log('doc')
+            // console.log('doc')
             return "doctor"
             break;
         case "patuser":
-            console.log('patient')
+            // console.log('patient')
             return "patient"
         default: 
             return state;

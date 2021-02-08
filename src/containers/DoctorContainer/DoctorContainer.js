@@ -7,7 +7,7 @@ import NavBar from '../../components/NavBar/NavBar'
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import useStyles from './DoctorLandingStyle'
+import useStyles from './DoctorContainerStyles'
 
 
 const DoctorLanding = (props) => {
@@ -20,7 +20,7 @@ const DoctorLanding = (props) => {
                                 <Typography>
                                     <Card className={classes.root}>
                                     <CardContent className={classes.card}>
-                                        <p>Welcome to MedSync</p>
+                                        <p>Patients</p>
                                     </CardContent>
                                     </Card>
                                 </Typography>
@@ -30,7 +30,7 @@ const DoctorLanding = (props) => {
     }
     return (
         <div > 
-
+        {props.doctor ? 
         <Grid container spacing={3} align="center" justify="center" >
             <Grid item xs={8} m={4}>
             <Paper className={classes.loginBox}>
@@ -42,6 +42,7 @@ const DoctorLanding = (props) => {
 
         </Grid>
     </Grid>
+     : "No Patients to See!"}
     </div>
     )
 }
