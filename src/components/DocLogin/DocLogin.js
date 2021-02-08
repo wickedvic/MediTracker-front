@@ -29,7 +29,7 @@ class DocLogin extends Component {
     e.preventDefault()
     this.props.doctorLogin(this.state);
     if (localStorage.getItem("token") !== "undefined") {
-      this.props.history.push("/allpatients")
+      this.props.history.push("/patients")
     }
   };
 

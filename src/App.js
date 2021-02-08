@@ -10,6 +10,11 @@ import { Component } from 'react';
 import DoctorContainer from './containers/DoctorContainer/DoctorContainer';
 import PatientContainer from './containers/PatientContainer/PatientContainer';
 import { sessionUserAction } from './redux/actions'
+import PatientContainerSpecs from './containers/PatientContainerSpecs/PatientContainerSpecs';
+
+
+
+
 
 
 
@@ -40,7 +45,7 @@ function App(props) {
     <NavBar/>
     <Switch>
       <Route path="/doctorlogin" render={() =>(<DocLogin/>)}/>
-      <Route path="/allpatients" render={() => (<DoctorContainer/>)}/>
+      <Route path="/patients" render={() => (<PatientContainerSpecs/>)}/>
       <Route path="/patientlogin" render={() =>(<PatLogin/>)}/>
       <Route path="/mymeds" render={() => (<PatientContainer/>)}/>
       <Route path="/" render={() =>(<LandingContainer/>)}/>

@@ -1,57 +1,67 @@
-import React from 'react'
-import Card from '@material-ui/core/Card';
-// import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-// import LoginContainer from '../LoginContainer/LoginContainer'
-// import NavBar from '../../components/NavBar/NavBar'
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import useStyles from './DoctorContainerStyles'
-import { connect } from 'react-redux'
-// import Loading from '../../components/Loading/Loading'
+import React, { Component } from "react";
+import Grid from "@material-ui/core/Grid";
+import useStyles from "./DoctorContainerStyles";
+import { connect } from "react-redux";
+import PatientDetails from "../../components/PatientDetails/PatientDetails";
+import { withStyles } from "@material-ui/core/styles";
+import { Route, Switch } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
 
+class DoctorLanding extends React.Component {
+  state = {
+    patients: [],
+  };
 
-const DoctorLanding = (props) => {
-    const classes = useStyles()
-
-    const renderPatients = () => {
-        return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map( num => {
-            return (
-                <Grid item xs={3} >
-                                <Typography>
-                                    <Card className={classes.root}>
-                                    <CardContent className={classes.card}>
-                                        <p>Patients</p>
-                                    </CardContent>
-                                    </Card>
-                                </Typography>
-                            </Grid>
-            )
-        })
+  componentDidUpdate(prevProps) {
+    if (this.props.doctor && prevProps !== this.props) {
+      fetch(`http://localhost:3000/api/v1/doctors/${this.props.doctor.user.id}`)
+        .then((res) => res.json())
+        .then((res) => {
+          this.setState({ patients: res.patients });
+        });
     }
+  }
+  componentDidMount() {
+    if (this.props.doctor) {
+      fetch(`http://localhost:3000/api/v1/doctors/${this.props.doctor.user.id}`)
+        .then((res) => res.json())
+        .then((res) => {
+          this.setState({ patients: res.patients });
+        });
+    }
+  }
+
+  renderPatients = () => {
+    return this.state.patients.map((pt) => (
+      <PatientDetails key={pt.id} patient={pt} />
+    ));
+  };
+
+  render() {
+    const { classes } = this.props;
+
     return (
-        <div > 
-        {props.doctor ? 
-        <Grid container spacing={3} align="center" justify="center" >
+      <div>
+        {this.props.doctor ? (
+          <Grid container spacing={3} align="center" justify="center">
             <Grid item xs={8} m={4}>
-            <Paper className={classes.loginBox}>
-                <Grid container spacing={3}>
-                    {renderPatients()}
-                </Grid>
-            </Paper>
-
-
-        </Grid>
-    </Grid>
-     : "No Patients to See!"}
-    </div>
-    )
+              <Grid container spacing={3}>
+                {this.renderPatients()}
+              </Grid>
+            </Grid>
+          </Grid>
+        ) : (
+          <Loading />
+        )}
+      </div>
+    );
+  }
 }
 
 const msp = (state) => {
-    return {doctor: state.doctor}
-}
+  return { doctor: state.doctor };
+};
 
-
-export default connect(msp)(DoctorLanding) 
+export default connect(msp)(
+  withStyles(useStyles, { withTheme: true })(DoctorLanding)
+);

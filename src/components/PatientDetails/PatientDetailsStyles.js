@@ -1,4 +1,6 @@
-const useStyles = (theme) => ({
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
     root: {
       width: "150px"
     },
@@ -9,11 +11,11 @@ const useStyles = (theme) => ({
       flexGrow: 1,
     },
     card: {
-      margin: "5px"     
+        margin: "5px"     
     },
     image: {
         width: "120px"
     }
-  });
+  }));
 
 export default useStyles 
