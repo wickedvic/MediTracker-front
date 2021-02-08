@@ -28,11 +28,15 @@ class DocLogin extends Component {
   submitHandler = (e) => {
     e.preventDefault()
     this.props.doctorLogin(this.state);
-    this.props.history.push("/allpatients")
+    if (localStorage.getItem("token") !== "undefined") {
+      this.props.history.push("/allpatients")
+    }
   };
+
+
   render() {
     const { classes } = this.props;
-    console.log(this.props.doctor);
+    // console.log(this.props.doctor);
     return (
       <div>
         <Grid container spacing={3}>

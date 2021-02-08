@@ -1,5 +1,16 @@
 import { useHistory } from "react-router-dom";
 
+export function sessionUserAction(user, dispatch) {
+    return function(){
+        if (localStorage.getItem("user") === "doctor") {
+            dispatch({ type: "LOGIN_DOCTOR", payload: user})
+        } else if (localStorage.getItem("user") === "patient") {
+            dispatch({ type: "LOGIN_PATIENT", payload: user})
+        }
+    }
+
+}
+
 export function docLoginAction(doc, dispatch) {
     return function(){
         const config = {

@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import useStyles from './DoctorContainerStyles'
 import { connect } from 'react-redux'
+// import Loading from '../../components/Loading/Loading'
 
 
 const DoctorLanding = (props) => {

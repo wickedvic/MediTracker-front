@@ -7,18 +7,23 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "./LandingStyles";
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 
 const LandingContainer = (props) => {
   const classes = useStyles();
   return (
+    <>
+    {props.doctor ? <Redirect to="/allpatients"/> : null}
+    {props.patient ? <Redirect to='/mymeds'/> : null}
     <div>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Grid container spacing={3} align="center" justify="center">
             <Grid item xs={6}>
               <Paper className={classes.loginBox}>
-                <Typography>
+              <Typography component="span">
                   <Card className={classes.root}>
                     <CardContent>
                       <LoginContainer />
@@ -30,8 +35,13 @@ const LandingContainer = (props) => {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+      </div>
+      </>
   );
 };
 
-export default LandingContainer;
+const msp = (state) => {
+  return {doctor: state.doctor, patient: state.patient}
+}
+
+export default connect(msp)(LandingContainer) 

@@ -11,6 +11,7 @@ import { TextField } from '@material-ui/core'
 import { Button } from '@material-ui/core'
 import { connect } from 'react-redux'
 import { ptLoginAction } from '../../redux/actions';
+import { withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 
 
@@ -29,8 +30,12 @@ class PatientLogin extends Component {
         })
     }
 
-    submitHandler = () => {
+    submitHandler = (e) => {
+        e.preventDefault()
         this.props.patientLogin(this.state)
+        if (localStorage.getItem("token") !== "undefined") {
+            this.props.history.push("/mymeds")
+        }
     }
     render() {
     //   console.log(this.props.patient)
@@ -42,14 +47,14 @@ class PatientLogin extends Component {
                   <Grid container spacing={3} align="center" justify="center" >
                       <Grid item xs={6} >
                          <Paper className={classes.loginBox}>
-                      <Typography>
+                         <Typography component="span">
                           <Card >
                           {/* className={classes.root} */}
                           <CardContent>
                               <h3>Log In: Patient </h3>
                                 <TextField onChange={this.formEdit} className={classes.textField} value={this.state.email} name="email" type="text" label="email"/>
                                 <TextField onChange={this.formEdit} className={classes.textField} value={this.state.password} name="password" type="password" label="password" ></TextField>
-                                <br/><br/><Button onClick={this.submitHandler}>Log in</Button>
+                                <br/><br/><Button type="submit" onClick={this.submitHandler}>Log in</Button>
                           </CardContent>
                           </Card>
                       </Typography>
@@ -72,4 +77,4 @@ class PatientLogin extends Component {
       return { patientLogin: (pt) => dispatch(ptLoginAction(pt, dispatch))}
   }
   
-  export default connect(msp, mdp)(withStyles(useStyles, { withTheme: true })(PatientLogin))
+  export default connect(msp, mdp)(withStyles(useStyles, { withTheme: true })(withRouter(PatientLogin)))

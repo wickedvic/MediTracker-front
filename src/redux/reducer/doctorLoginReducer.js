@@ -5,7 +5,7 @@ const defaultState = {
 function doctorLoginReducer(state=defaultState.doctor, action) {
     switch (action.type) {
         case "LOGIN_DOCTOR":
-            console.log("action", action)
+            // console.log("action", action)
             if (action.payload.user) {
                 return action.payload
             }
