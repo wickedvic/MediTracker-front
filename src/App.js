@@ -1,12 +1,11 @@
 import "./App.css";
-// import Grid from "@material-ui/core/Grid";
 import React from "react";
-// import { connect } from 'react-redux'
+  // import { connect } from 'react-redux'
 import { Route, Switch } from "react-router-dom"
-import LandingContainer from './containers/LandingContainer';
-import NavBar from './components/NavBar';
-import DocLogin from './components/DocLogin'
-import PatLogin from './components/PatLogin';
+import LandingContainer from './containers/LandingContainer/LandingContainer';
+import NavBar from './components/NavBar/NavBar';
+import DocLogin from './components/DocLogin/DocLogin'
+import PatLogin from './components/PatLogin/PatLogin';
 
 
 function App(props) {

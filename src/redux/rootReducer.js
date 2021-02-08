@@ -1,13 +1,13 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
+import { userReducer } from './reducer/userReducer'
 
-// const defaultState = {
-//     click: false
-// }
-
+const defaultState = {
+  user: localStorage.getItem("user"),
+};
 
 
 const rootReducer = combineReducers({
-    
-})
+    user: userReducer
+});
 
-export default rootReducer
+export default rootReducer;
