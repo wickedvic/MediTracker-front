@@ -14,7 +14,15 @@ class DoctorLanding extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.doctor && prevProps !== this.props) {
-      fetch(`http://localhost:3000/api/v1/doctors/${this.props.doctor.user.id}`)
+        let token = localStorage.getItem("token")
+        if (!token) {
+            token = this.props.doctor.jwt
+        }
+        const configObj = {
+            method: "GET",
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}
+        }
+        fetch(`http://localhost:3000/api/v1/doctors/${this.props.doctor.user.id}`, configObj)
         .then((res) => res.json())
         .then((res) => {
           this.setState({ patients: res.patients });
@@ -23,7 +31,11 @@ class DoctorLanding extends React.Component {
   }
   componentDidMount() {
     if (this.props.doctor) {
-      fetch(`http://localhost:3000/api/v1/doctors/${this.props.doctor.user.id}`)
+        const configObj = {
+            method: "GET",
+            headers: { authorization: `Bearer ${localStorage.getItem("token")}`}
+        }
+        fetch(`http://localhost:3000/api/v1/doctors/${this.props.doctor.user.id}`, configObj)
         .then((res) => res.json())
         .then((res) => {
           this.setState({ patients: res.patients });
