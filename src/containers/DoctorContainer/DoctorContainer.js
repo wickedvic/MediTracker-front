@@ -9,7 +9,7 @@ import Loading from "../../components/Loading/Loading";
 
 class DoctorLanding extends React.Component {
   state = {
-    patients: [],
+    users: [],
   };
 
   componentDidUpdate(prevProps) {
@@ -38,16 +38,15 @@ class DoctorLanding extends React.Component {
         fetch(`http://localhost:3000/api/v1/doctors/${this.props.doctor.user.id}`, configObj)
         .then((res) => res.json())
         .then((res) => {
-          this.setState({ patients: res.patients });
+          this.setState({ users: res.users });
         });
     }
   }
 
   renderPatients = () => {
-    return this.state.patients.map((pt) => (
-      <PatientDetails key={pt.id} patient={pt} />
-    ));
-  };
+
+    return this.state.users.map( user => <PatientDetails key={user.id} patient={user}/>)
+}
 
   render() {
     const { classes } = this.props;

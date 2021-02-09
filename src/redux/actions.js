@@ -1,15 +1,5 @@
 import { useHistory } from "react-router-dom";
 
-export function sessionUserAction(user, dispatch) {
-    return function(){
-        if (localStorage.getItem("user") === "doctor") {
-            dispatch({ type: "LOGIN_DOCTOR", payload: user})
-        } else if (localStorage.getItem("user") === "patient") {
-            dispatch({ type: "LOGIN_PATIENT", payload: user})
-        }
-    }
-
-}
 
 export function docLoginAction(doc, dispatch) {
     return function(){
@@ -24,7 +14,6 @@ export function docLoginAction(doc, dispatch) {
         fetch('http://localhost:3000/api/v1/login', config)
         .then(res => res.json())
         .then(res =>{ 
-        // console.log(res)
         dispatch({ type: "LOGIN_DOCTOR", payload: res})
         localStorage.setItem("token", res.jwt)
         localStorage.setItem("user", "doctor")
@@ -50,6 +39,17 @@ export function ptLoginAction(pt, dispatch) {
         localStorage.setItem("token", res.jwt)
         localStorage.setItem("user", "patient")
         })
+    }
+
+}
+
+export function sessionUserAction(user, dispatch) {
+    return function(){
+        if (localStorage.getItem("user") === "doctor") {
+            dispatch({ type: "LOGIN_DOCTOR", payload: user})
+        } else if (localStorage.getItem("user") === "patient") {
+            dispatch({ type: "LOGIN_PATIENT", payload: user})
+        }
     }
 
 }
