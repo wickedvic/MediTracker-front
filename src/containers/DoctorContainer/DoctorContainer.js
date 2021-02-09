@@ -25,7 +25,7 @@ class DoctorLanding extends React.Component {
         fetch(`http://localhost:3000/api/v1/doctors/${this.props.doctor.user.id}`, configObj)
         .then((res) => res.json())
         .then((res) => {
-          this.setState({ patients: res.patients });
+          this.setState({ users: res.users });
         });
     }
   }
@@ -44,7 +44,7 @@ class DoctorLanding extends React.Component {
   }
 
   renderPatients = () => {
-
+// console.log(this.state)
     return this.state.users.map( user => <PatientDetails key={user.id} patient={user}/>)
 }
 

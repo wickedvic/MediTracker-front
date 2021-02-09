@@ -15,12 +15,14 @@ import { ptLoginAction } from '../../redux/actions';
 import { withRouter } from 'react-router-dom'
 import Loading from '../Loading/Loading'
 import MdMed from '../MdMed/MdMed'
+import NewMedForm from '../NewMedForm/NewMedForm';
 
 class PatientSpecs extends Component {
 
     state = {
         user_id: this.props.id,
-        user: null
+        user: null,
+        add: false
     }
 
 
@@ -34,6 +36,56 @@ class PatientSpecs extends Component {
         .then(res => this.setState({ user: res }))
     }
 
+    refreshMeds = (id) => {
+        const updatePatient = {...this.state.user}
+        const updatedMeds = updatePatient.user_meds.filter( med => med.id !== id)
+        updatePatient['user_meds'] = updatedMeds
+        this.setState( {
+            user: updatePatient
+        })
+    }
+
+    refreshMedsEdit = (id, body) => {
+        const updatePatient = {...this.state.user}
+        const index = updatePatient.user_meds.findIndex( med => med.id === id)
+        updatePatient['user_meds'][index].notes = body["notes"]
+        updatePatient['user_meds'][index].pill_count = body["pill_count"]
+        updatePatient['user_meds'][index].time = body["time"]
+        this.setState( {
+            user: updatePatient
+        })
+    }
+
+    clickAddForm = () => {
+        this.setState(prev => ({ add: !prev.add}))
+    }
+
+
+    createPatientMed = (body) => {
+        body.user_id = this.state.user_id
+        const configObj = {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                "content-type": "application/json",
+                accept: "application/json"
+            },
+            body: JSON.stringify(body)
+        }
+        fetch('http://localhost:3000/api/v1/user_meds', configObj)
+        .then(res => res.json())
+        .then(res => this.refreshMedsAdd(res))
+    }
+
+    refreshMedsAdd = (pt_med) => {
+        const updatePatient = {...this.state.user}
+        updatePatient.user_meds.push(pt_med)
+        this.setState( {
+            user: updatePatient,
+            add: false
+        })
+        console.log(pt_med)
+    }
 
 
     render() {
@@ -41,7 +93,7 @@ class PatientSpecs extends Component {
         const renderMeds = () => {
             console.log(this.state)
             return this.state.user.user_meds.map(med => {
-                return <MdMed med={med}/>
+                return <MdMed key={med.id} refreshMedsEdit={this.refreshMedsEdit} refreshMeds={this.refreshMeds} med={med}/>
             })
         }
         return (
@@ -57,6 +109,12 @@ class PatientSpecs extends Component {
                             <img src={this.state.user.image}/>
                             <h3>Meds:</h3>
                             {renderMeds()}
+                            <Button onClick={this.clickAddForm}>Add a med:</Button>
+                            {
+                                this.state.add ?
+                                <NewMedForm createPatientMed={this.createPatientMed}/>
+                                : null
+                            }
                         </Typography>
                         </Paper>
                         </Grid>   
