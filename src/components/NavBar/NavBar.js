@@ -34,7 +34,7 @@ const NavBar = (props) => {
       <AppBar position="static" color="primary" className={classes.navMargin}>
         <Toolbar >
         <img onClick={redirectHome} className={classes.img} src="https://i.imgur.com/SF5Sczc.png" alt="doc-img"/>
-        <Typography className={classes.title} >{props.doctor ? <Button color="inherit" onClick={clickHandler}>My Patients</Button> : null}
+        <Typography className={classes.title} >{props.doctor ? <Button color="inherit" onClick={clickHandler}>Manage Patients</Button> : null}
 
             {/* MEDITRACKER */}
           </Typography >

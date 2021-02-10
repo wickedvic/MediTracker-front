@@ -47,7 +47,7 @@ class DocLogin extends Component {
                   <Typography component={"span"}>
                     <Card className={classes.root}>
                       <CardContent>
-                        <h3>Log In: Doctor </h3>
+                        <h3>Doctor Login </h3>
                         <form>
                           <TextField
                             onChange={this.formEdit}

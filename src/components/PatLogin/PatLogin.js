@@ -51,7 +51,7 @@ class PatientLogin extends Component {
                           <Card >
                           {/* className={classes.root} */}
                           <CardContent>
-                              <h3>Log In: Patient </h3>
+                              <h3>Patient Login</h3>
                               <form>
                                 <TextField onChange={this.formEdit} className={classes.textField} value={this.state.email} name="email" type="text" label="email"/>
                                 <TextField onChange={this.formEdit} className={classes.textField} value={this.state.password} name="password" type="password" label="password" ></TextField>

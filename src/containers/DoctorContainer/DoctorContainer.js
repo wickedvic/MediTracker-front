@@ -9,7 +9,7 @@ import Loading from "../../components/Loading/Loading";
 
 class DoctorLanding extends React.Component {
   state = {
-    users: [],
+    users: []
   };
 
   componentDidUpdate(prevProps) {
@@ -45,8 +45,10 @@ class DoctorLanding extends React.Component {
 
   renderPatients = () => {
 // console.log(this.state)
-    return this.state.users.map( user => <PatientDetails key={user.id} patient={user}/>)
-}
+
+    return (
+      this.state.users.map( user => <PatientDetails key={user.id} patient={user}/>)
+    )}
 
   render() {
     const { classes } = this.props;

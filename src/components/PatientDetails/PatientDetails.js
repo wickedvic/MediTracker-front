@@ -18,7 +18,7 @@ const PatientDetails = (props) => {
             <p>{props.patient.name}</p>
             <img className={classes.image} src={props.patient.image} />
             <NavLink to={`/patients/${props.patient.id}`}>
-              <Button> Patient Details</Button>
+              <Button className={classes.button} color="primary"> Medication Info </Button>
             </NavLink>
           </CardContent>
         </Card>

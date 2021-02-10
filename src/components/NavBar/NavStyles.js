@@ -5,14 +5,14 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    // marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
     // paddingLeft: "18%",
   },
   navMargin: {
-    marginBottom: "30px",
+    marginBottom: "10px",
   },
   img: {
     padding: "10px",

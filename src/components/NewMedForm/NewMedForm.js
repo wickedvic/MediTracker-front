@@ -51,14 +51,18 @@ export class NewMedForm extends Component {
             <TextField onChange={this.formEdit} id="time" label="med" name="med" value={this.state.med} select>
                 {this.state.meds.map(med => <MenuItem value={med.id}>{med.name}</MenuItem>)}
             </TextField><br/>
-            <TextField onChange={this.formEdit} type="number" min={1} name="pill_count" value={this.state.pill_count} label="# pills"/>
-            <TextField onChange={this.formEdit} value={this.state.notes} name="notes" label="notes"/>
-            <TextField onChange={this.formEdit} id="time" label="time" name="time" value={this.state.time} select>
+            <br></br>
+            <TextField onChange={this.formEdit} type="number" min={1} name="pill_count" value={this.state.pill_count} label="Number of pills"/>
+            <br></br>
+            <TextField onChange={this.formEdit} value={this.state.notes} name="notes" label="⚠️"/>
+            <br></br>
+            <TextField onChange={this.formEdit} id="time" label="Select Time" name="time" value={this.state.time} select>
                 <MenuItem value="morning">Morning</MenuItem>
                 <MenuItem value="afternoon ">Afternoon</MenuItem>
                 <MenuItem value="evening ">Evening</MenuItem>
                 </TextField><br/>
-            <Button type="submit">Add Med</Button>
+                <br></br>
+            <Button type="submit">Click To Add Med</Button>
             </form>
 
             </>
