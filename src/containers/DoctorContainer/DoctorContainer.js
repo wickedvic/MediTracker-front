@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import Grid from "@material-ui/core/Grid";
 import useStyles from "./DoctorContainerStyles";
 import { connect } from "react-redux";
@@ -9,7 +9,8 @@ import Loading from "../../components/Loading/Loading";
 
 class DoctorLanding extends React.Component {
   state = {
-    users: []
+    users: [],
+  
   };
 
   componentDidUpdate(prevProps) {
@@ -33,7 +34,7 @@ class DoctorLanding extends React.Component {
     if (this.props.doctor) {
         const configObj = {
             method: "GET",
-            headers: { authorization: `Bearer ${localStorage.getItem("token")}`}
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}
         }
         fetch(`http://localhost:3000/api/v1/doctors/${this.props.doctor.user.id}`, configObj)
         .then((res) => res.json())
@@ -44,11 +45,22 @@ class DoctorLanding extends React.Component {
   }
 
   renderPatients = () => {
-// console.log(this.state)
+console.log(this.state.users)
 
-    return (
+    return ( 
+    
+      this.state.users !== [] ? 
       this.state.users.map( user => <PatientDetails key={user.id} patient={user}/>)
+      
+      :
+      <p> Loading... </p>
+     
     )}
+  
+  
+
+
+
 
   render() {
     const { classes } = this.props;
@@ -64,7 +76,7 @@ class DoctorLanding extends React.Component {
             </Grid>
           </Grid>
         ) : (
-          <Loading />
+         <p> Loading... </p>
         )}
       </div>
     );

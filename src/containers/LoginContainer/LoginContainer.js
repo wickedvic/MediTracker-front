@@ -44,9 +44,9 @@ const LoginContainer = (props) => {
           <p>Choose either of the following...</p>
           </Typography>
           
-          <Button className={classes.button} variant="outlined" color="primary" onClick={docClick}>Doctor</Button>
+          <Button className={classes.button} variant="contained" color="primary" onClick={docClick}>Doctor</Button>
           <br></br>
-          <Button className={classes.button} variant="outlined" color="secondary" onClick={patientClick}>Patient </Button> 
+          <Button className={classes.button} variant="contained" color="secondary" onClick={patientClick}>Patient </Button> 
             <Grid container>
               <Grid item xs>
               </Grid>
