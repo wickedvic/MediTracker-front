@@ -9,7 +9,7 @@ const useStyles = (theme) => ({
       flexGrow: 1,
     },
     card: {
-      margin: "5px"     
+      margin: "5px",     
     },
     image: {
         width: "120px"

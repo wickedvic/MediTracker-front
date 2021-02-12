@@ -52,9 +52,11 @@ export class NewMedForm extends Component {
                 {this.state.meds.map(med => <MenuItem value={med.id}>{med.name}</MenuItem>)}
             </TextField><br/>
             <br></br>
+            <TextField onChange={this.formEdit} value={this.state.notes} name="notes" label="⚠️"/>
+            <br></br>
+            <br></br>
             <TextField onChange={this.formEdit} type="number" min={1} name="pill_count" value={this.state.pill_count} label="Number of pills"/>
             <br></br>
-            <TextField onChange={this.formEdit} value={this.state.notes} name="notes" label="⚠️"/>
             <br></br>
             <TextField onChange={this.formEdit} id="time" label="Select Time" name="time" value={this.state.time} select>
                 <MenuItem value="morning">Morning</MenuItem>

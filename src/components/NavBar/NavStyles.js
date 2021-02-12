@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     // paddingLeft: "18%",
   },
   navMargin: {
-    marginBottom: "10px",
+    marginBottom: "25px",
   },
   img: {
     padding: "10px",

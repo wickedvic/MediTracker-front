@@ -107,9 +107,10 @@ class PatientSpecs extends Component {
                         <Typography component="span" className={classes.info}>
                             <h2>{this.state.user.name}</h2>
                             <img src={this.state.user.image}/>
-                            <h3>Meds:</h3>
+                            <h3>Prescribed Medications:</h3>
                             {renderMeds()}
-                            <Button onClick={this.clickAddForm}>Add a med:</Button>
+                            <br></br>
+                            <Button onClick={this.clickAddForm}>Add A New medication</Button>
                             {
                                 this.state.add ?
                                 <NewMedForm createPatientMed={this.createPatientMed}/>

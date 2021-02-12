@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = (theme) => ({
     root: {
       flexGrow: 1,
     },
@@ -13,6 +13,6 @@ const useStyles = makeStyles((theme) => ({
     card: {
         margin: "5px"
     }
-  }));
+  });
 
 export default useStyles 
