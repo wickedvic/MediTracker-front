@@ -53,3 +53,33 @@ export function sessionUserAction(user, dispatch) {
     }
 
 }
+
+export function signUp(userInfo){
+    return (dispatch) => {
+        fetch('http://localhost:3000/api/v1/signup', {
+           method: "POST", 
+           headers: {
+               'Content-Type':'application/json', 
+               'Accept': 'application/json'
+           },
+           body: JSON.stringify({
+               user: {
+                   name: userInfo.name,
+                   email: userInfo.email,
+                   password_digest: userInfo.password,
+                   image: userInfo.image,
+                   doctor_id: 1
+                   
+                           
+               }
+           }) 
+        })
+        .then( r => r.json())
+        .then( data => {
+            // dispatch(setCurrentUser(data.user))
+            localStorage.setItem("jwt", data.jwt)
+        })
+
+        
+    }
+}

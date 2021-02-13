@@ -9,6 +9,16 @@ import { withStyles } from "@material-ui/core/styles"
 import { Button } from '@material-ui/core'
 import { TextField, Select, MenuItem } from '@material-ui/core'
 
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+
+import CardMedia from '@material-ui/core/CardMedia';
+import fireWorks from './SpecialEffects'
+import Checkbox from '@material-ui/core/Checkbox';
+
+
+
+
 
 class PtMed extends Component {
 
@@ -34,7 +44,7 @@ class PtMed extends Component {
         }
         fetch(`http://localhost:3000/api/v1/user_meds/${ptMedId}`, configObj)
         .then(res => res.json())
-        .then(res => this.setState({ taken: res.has_taken}))
+        .then(res => this.setState({ taken: res.has_taken  }))
     }
 
 
@@ -45,13 +55,25 @@ class PtMed extends Component {
         return (
             < > 
                 {
+ <Card className={classes.root} container className={this.state.taken? classes.taken : classes.not_taken} xs={12} >
+ <CardActionArea>
+   <CardContent>
+     <Typography gutterBottom variant="h5" component="h5">
+     <img className={this.state.taken? classes.image_taken : classes.image} src={this.props.med.med.image_url}/>
+     </Typography>
+     <Typography variant="body2" color="textSecondary" component="p">
+     <b>{this.props.med.med.name}</b><b> <br/> {this.props.med.pill_count} pill(s) {this.props.med.med.pill_color} IN COLOR</b>,<br/> {this.props.med.notes ? <><b>Doctor's notes: </b>   {this.props.med.notes}</> : null} <br/> <Checkbox  onClick={this.patchHandler}>{this.state.taken ? fireWorks()  : "Mark as taken"  }</Checkbox >
+     </Typography>
+   </CardContent>
+ </CardActionArea>
+ <CardActions>
+   <Button size="small" color="secondary">
+   <a href="https://www.rxlist.com/drug-medical-dictionary/article.htm">Learn More </a>
+   </Button>
+ </CardActions>
+</Card>
 
-<Grid container className={this.state.taken? classes.taken : classes.not_taken} xs={12} >
-{/* <Paper xs={12} variant="outlined"> */}
-<Grid item xs={5}> <img className={this.state.taken? classes.image_taken : classes.image} src={this.props.med.med.image_url}/></Grid>
-<Grid item xs={6}><b>{this.props.med.med.name}</b><b> <br/> {this.props.med.pill_count} pill(s) {this.props.med.med.pill_color} IN COLOR</b>,<br/> {this.props.med.notes ? <><b>Doctor's notes: </b>   {this.props.med.notes}</> : null} <br/> <Button  onClick={this.patchHandler}>{this.state.taken ? "Undo" : "Mark as taken" }</Button></Grid>
-{/* </Paper> */}
-</Grid>
+
                 }
             </>
         )
@@ -62,3 +84,17 @@ class PtMed extends Component {
 export default (withStyles(useStyles, { withTheme: true })(PtMed)) 
 
 
+
+
+
+// <Grid container className={this.state.taken? classes.taken : classes.not_taken} xs={12} >
+// {/* <Paper xs={12} variant="outlined"> */}
+
+// <Grid container
+// direction="column" justify="center"
+//   alignItems="stretch" 
+// item xs={8}><b>{this.props.med.med.name}</b><b> <br/> {this.props.med.pill_count} pill(s) {this.props.med.med.pill_color} IN COLOR</b>,<br/> {this.props.med.notes ? <><b>Doctor's notes: </b>   {this.props.med.notes}</> : null} <br/> <Button  onClick={this.patchHandler}>{this.state.taken ? "Undo" : "Mark as taken" }</Button></Grid>
+// <Grid 
+// item xs={4}> <img className={this.state.taken? classes.image_taken : classes.image} src={this.props.med.med.image_url}/></Grid>
+// {/* </Paper> */}
+// </Grid>

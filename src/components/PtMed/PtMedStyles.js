@@ -2,11 +2,11 @@
 const useStyles = (theme) => ({
     
   image_taken: {
-    width: "150px",
+    width: "45%",
     opacity: "0.5"
 },
     image: {
-        width: "150px"
+        width: "45%"
     },
     taken: {
       color: "#aaaaaa",

@@ -74,21 +74,22 @@ return (
                     <Grid item xs={12}><h2>Medications for {this.props.patient.user.name}</h2></Grid>
                             <>{this.filterTime("morning").length > 0 ?
                                 <>
-                                <h3>Mornings:</h3> 
+                        
+                                <h3>Take With Breakfast:</h3> 
                                 {this.filterTime("morning").map(med => <Grid item xs={12}><PtMed key={med.med.id} med={med}/></Grid>)}
                                 </>
                             : null
                             }</>
                             <>{this.filterTime("afternoon ").length > 0 ?
                                 <>
-                                <h3>Afternoons:</h3> 
+                                <h3>Take With Lunch:</h3> 
                                 {this.filterTime("afternoon ").map(med => <Grid item xs={12}><PtMed key={med.med.id} med={med}/></Grid>)}
                                 </>
                             : null
                             }</>
                             <>{this.filterTime("evening ").length > 0 ?
                                 <>
-                                <h3>Evenings:</h3> 
+                                <h3>Take With Dinner:</h3> 
                                 {this.filterTime("evening ").map(med => <Grid item xs={12}><PtMed key={med.med.id} med={med}/></Grid>)}
                                 </>
                             : null
@@ -99,7 +100,8 @@ return (
                 
                 </Grid>
             </Grid>
-            : <Loading/> 
+            : 
+            <p> Loading... </p>
         }
             </div>
              )}

@@ -11,6 +11,8 @@ import DoctorContainer from './containers/DoctorContainer/DoctorContainer';
 import PatientContainer from './containers/PatientContainer/PatientContainer';
 import { sessionUserAction } from './redux/actions'
 import PatientContainerSpecs from './containers/PatientContainerSpecs/PatientContainerSpecs';
+import Signup from './components/Signup/Signup';
+import SignupPage from './containers/SignupPage/SignupPage.js'
 
 
 
@@ -40,6 +42,12 @@ function App(props) {
     }
   })
 
+ 
+
+
+
+
+
   return (
     <>
     <NavBar/>
@@ -48,7 +56,9 @@ function App(props) {
       <Route path="/patients" render={() => (<PatientContainerSpecs/>)}/>
       <Route path="/patientlogin" render={() =>(<PatLogin/>)}/>
       <Route path="/mymeds" render={() => (<PatientContainer/>)}/>
+      <Route path="/signup" render={() =>(<SignupPage/>)}/>
       <Route path="/" render={() =>(<LandingContainer/>)}/>
+      
     </Switch>
     </>
   );

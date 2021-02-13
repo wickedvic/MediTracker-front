@@ -30,14 +30,35 @@ const NavBar = (props) => {
     redirectHome()
   }
 
+  const redirectPatientCreate = () => {
+    history.push("/signup")
+    
+
+  }
+
+  const redirectUserMeds = () => {
+    history.push("/usermeds")
+  }
+
     return (
       <AppBar position="static" color="primary" className={classes.navMargin}>
         <Toolbar >
         <img onClick={redirectHome} className={classes.img} src="https://i.imgur.com/SF5Sczc.png" alt="doc-img"/>
-        <Typography className={classes.title} >{props.doctor ? <Button color="inherit" onClick={clickHandler}>Manage Patients</Button> : null}
-
+       {props.doctor ? 
+       <Typography classname={classes.title}> 
+       <Button color="inherit" onClick={clickHandler}>Manage Patients</Button> 
+        <Button color="inherit" onClick={redirectPatientCreate}>Add A Patient</Button>
             {/* MEDITRACKER */}
           </Typography >
+          : null}
+
+{props.patient ? 
+            <Typography className={classes.title}> 
+                <Button color="inherit" onClick={redirectUserMeds}>Profile</Button> 
+            </Typography> 
+            : null}
+
+
           {props.doctor || props.patient ? <Button onClick={clearUser} color="inherit">Logout</Button> : null}
         </Toolbar>
       </AppBar>
