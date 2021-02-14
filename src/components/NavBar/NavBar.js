@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 // import IconButton from '@material-ui/core/IconButton';
 // import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from "react-router-dom"
 
 
 
@@ -36,8 +37,14 @@ const NavBar = (props) => {
 
   }
 
+  // const redirectPatientEdit = () => {
+  //   history.push("/profile/edit")
+    
+
+  // }
+
   const redirectUserMeds = () => {
-    history.push("/usermeds")
+    history.push("/mymeds")
   }
 
     return (
@@ -48,13 +55,16 @@ const NavBar = (props) => {
        <Typography classname={classes.title}> 
        <Button color="inherit" onClick={clickHandler}>Manage Patients</Button> 
         <Button color="inherit" onClick={redirectPatientCreate}>Add A Patient</Button>
-            {/* MEDITRACKER */}
+           
           </Typography >
           : null}
 
 {props.patient ? 
             <Typography className={classes.title}> 
                 <Button color="inherit" onClick={redirectUserMeds}>Profile</Button> 
+                <Button className="button is-light">
+                           <Link to="/profile/edit">Edit Profile</Link>
+                        </Button>
             </Typography> 
             : null}
 

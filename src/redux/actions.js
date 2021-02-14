@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";
+import { UPDATE_PATIENT } from "./actionTypes"
 
 
 export function docLoginAction(doc, dispatch) {
@@ -83,3 +84,25 @@ export function signUp(userInfo){
         
     }
 }
+
+export function updatePatient (patientID, patientObj) {
+    return function (dispatch, getState){
+    fetch(`http://localhost:3000/api/v1/users/${patientID}`, {
+        method: "PATCH", 
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept':'application/json',
+            "Authorization" : `Bearer ${localStorage.getItem('jwt')}`
+        },
+        body: JSON.stringify({
+          user: patientObj
+        })
+    })
+    .then(resp => resp.json())
+    .then(updatedProfile => {
+        dispatch({type: UPDATE_PATIENT, payload: updatedProfile})
+    })
+
+}}
+
+

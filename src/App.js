@@ -11,8 +11,9 @@ import DoctorContainer from './containers/DoctorContainer/DoctorContainer';
 import PatientContainer from './containers/PatientContainer/PatientContainer';
 import { sessionUserAction } from './redux/actions'
 import PatientContainerSpecs from './containers/PatientContainerSpecs/PatientContainerSpecs';
-import Signup from './components/Signup/Signup';
+import PtEdit from './components/PtEdit/PtEdit';
 import SignupPage from './containers/SignupPage/SignupPage.js'
+
 
 
 
@@ -57,6 +58,12 @@ function App(props) {
       <Route path="/patientlogin" render={() =>(<PatLogin/>)}/>
       <Route path="/mymeds" render={() => (<PatientContainer/>)}/>
       <Route path="/signup" render={() =>(<SignupPage/>)}/>
+    
+      < Route path="/profile/edit" render={() => {
+          return < PtEdit />
+
+          }}/>
+
       <Route path="/" render={() =>(<LandingContainer/>)}/>
       
     </Switch>
