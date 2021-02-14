@@ -5,11 +5,11 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
-    // marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1,
-    // paddingLeft: "18%",
+    flexGrow: 0,
+    paddingLeft: "50%",
   },
   navMargin: {
     marginBottom: "25px",

@@ -59,10 +59,7 @@ function App(props) {
       <Route path="/mymeds" render={() => (<PatientContainer/>)}/>
       <Route path="/signup" render={() =>(<SignupPage/>)}/>
     
-      < Route path="/profile/edit" render={() => {
-          return < PtEdit />
-
-          }}/>
+      < Route path="/profile/edit" render={() => ( < PtEdit />)}/>
 
       <Route path="/" render={() =>(<LandingContainer/>)}/>
       

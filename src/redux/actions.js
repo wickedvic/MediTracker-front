@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { UPDATE_PATIENT } from "./actionTypes"
+import Swal from 'sweetalert2'
 
 
 export function docLoginAction(doc, dispatch) {
@@ -79,6 +80,10 @@ export function signUp(userInfo){
         .then( data => {
             // dispatch(setCurrentUser(data.user))
             localStorage.setItem("jwt", data.jwt)
+            Swal.fire({
+                title: 'Patient Created',
+                text: `Patient was added successfully!`,
+                icon: 'success'})
         })
 
         
@@ -101,6 +106,10 @@ export function updatePatient (patientID, patientObj) {
     .then(resp => resp.json())
     .then(updatedProfile => {
         dispatch({type: UPDATE_PATIENT, payload: updatedProfile})
+        Swal.fire({
+            title: 'Profile Updated',
+            text: `Updates were made successfully!`,
+            icon: 'success'})
     })
 
 }}

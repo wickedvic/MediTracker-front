@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import { useHistory } from "react-router-dom";
 // import IconButton from '@material-ui/core/IconButton';
 // import MenuIcon from '@material-ui/icons/Menu';
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 
 
 
@@ -37,14 +37,12 @@ const NavBar = (props) => {
 
   }
 
-  // const redirectPatientEdit = () => {
-  //   history.push("/profile/edit")
-    
-
-  // }
-
   const redirectUserMeds = () => {
     history.push("/mymeds")
+  }
+
+  const redirectEditPt = () => {
+    history.push("/profile/edit")
   }
 
     return (
@@ -52,7 +50,7 @@ const NavBar = (props) => {
         <Toolbar >
         <img onClick={redirectHome} className={classes.img} src="https://i.imgur.com/SF5Sczc.png" alt="doc-img"/>
        {props.doctor ? 
-       <Typography classname={classes.title}> 
+       <Typography className={classes.title}> 
        <Button color="inherit" onClick={clickHandler}>Manage Patients</Button> 
         <Button color="inherit" onClick={redirectPatientCreate}>Add A Patient</Button>
            
@@ -61,10 +59,8 @@ const NavBar = (props) => {
 
 {props.patient ? 
             <Typography className={classes.title}> 
-                <Button color="inherit" onClick={redirectUserMeds}>Profile</Button> 
-                <Button className="button is-light">
-                           <Link to="/profile/edit">Edit Profile</Link>
-                        </Button>
+                <Button color="inherit" onClick={redirectUserMeds}>Manage Meds</Button> 
+                <Button color="inherit" onClick={redirectEditPt}>Edit Profile</Button>
             </Typography> 
             : null}
 
