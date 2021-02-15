@@ -15,7 +15,7 @@ const PatientDetails = (props) => {
       <Typography component="span">
         <Card className={classes.root}>
           <CardContent className={classes.card}>
-            <p>{props.patient.name}</p>
+            <h5>{props.patient.name}</h5>
             <img className={classes.image} src={props.patient.image} />
             <NavLink to={`/patients/${props.patient.id}`}>
               <br></br>

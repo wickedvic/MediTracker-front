@@ -44,8 +44,9 @@ const NavBar = (props) => {
   const redirectEditPt = () => {
     history.push("/profile/edit")
   }
-
+  
     return (
+      
       <AppBar position="static" color="primary" className={classes.navMargin}>
         <Toolbar >
         <img onClick={redirectHome} className={classes.img} src="https://i.imgur.com/SF5Sczc.png" alt="doc-img"/>
