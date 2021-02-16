@@ -8,8 +8,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 0,
-    paddingLeft: "40%",
+    flexGrow: 1,
+    paddingLeft: "0%",
   },
   navMargin: {
     marginBottom: "25px",

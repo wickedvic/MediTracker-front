@@ -49,6 +49,9 @@ const NavBar = (props) => {
     history.push("/calendar")
   }
 
+  const redirectNotes = () => {
+    history.push("/notes")
+  }
   
     return (
       
@@ -60,6 +63,7 @@ const NavBar = (props) => {
        <Button color="inherit" onClick={clickHandler}>Manage Patients</Button> 
         <Button color="inherit" onClick={redirectPatientCreate}>Add A Patient</Button>
         <Button color="inherit" onClick={redirectCalendar}>Calendar</Button>
+        <Button color="inherit" onClick={redirectNotes}>Notes</Button>
           </Typography >
           : null}
 

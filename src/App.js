@@ -14,6 +14,7 @@ import PatientContainerSpecs from './containers/PatientContainerSpecs/PatientCon
 import PtEdit from './components/PtEdit/PtEdit';
 import SignupPage from './containers/SignupPage/SignupPage.js'
 import CalendarPage from './containers/CalendarPage/CalendarPage.js'
+import NotesPage from './containers/NotesPage/NotesPage'
 
 
 
@@ -61,7 +62,7 @@ function App(props) {
       <Route path="/signup" render={() =>(<SignupPage/>)}/>
       <Route path="/calendar" render={() =>(<CalendarPage/>)}/>
       < Route path="/profile/edit" render={() => ( < PtEdit />)}/>
-
+      < Route path="/notes" render={() => ( < NotesPage/>)}/>
       <Route path="/" render={() =>(<LandingContainer/>)}/>
       
     </Switch>

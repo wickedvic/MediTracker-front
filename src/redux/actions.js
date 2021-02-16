@@ -80,7 +80,7 @@ export function signUp(userInfo){
         .then( data => {
             if(data.error === "failed to create patient"){
                 Swal.fire({
-                    title: 'Unable to Create Patient!',
+                    title: 'Email already in use!',
                     text: `${data.error}`,
                     icon: 'error',
                     confirmButtonText: 'Back'

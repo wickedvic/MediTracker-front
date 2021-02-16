@@ -25,7 +25,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -62,7 +62,7 @@ class DocLogin extends Component {
       <div className={classes.paper}>
         <br></br>
         <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
+          <LocalHospitalIcon />
         </Avatar>
         <br></br>
         <Typography component="h1" variant="h5">

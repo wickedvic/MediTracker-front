@@ -14,7 +14,7 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -37,7 +37,7 @@ const LoginContainer = (props) => {
 
 <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <LocalHospitalIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
           <p>Welcome To MEDI-TRACKER!</p>
@@ -45,7 +45,11 @@ const LoginContainer = (props) => {
           </Typography>
           
           <Button className={classes.button} variant="contained" color="primary" onClick={docClick}>Doctor</Button>
-          <br></br>
+          <br></br> 
+          OR
+          <br></br> 
+          <br></br> 
+        
           <Button className={classes.button} variant="contained" color="secondary" onClick={patientClick}>Patient </Button> 
             <Grid container>
               <Grid item xs>
