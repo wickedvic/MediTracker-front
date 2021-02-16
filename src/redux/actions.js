@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { UPDATE_PATIENT } from "./actionTypes"
 import Swal from 'sweetalert2'
 
@@ -36,12 +36,12 @@ export function ptLoginAction(pt, dispatch) {
         fetch('http://localhost:3000/api/v1/patientlogin', config)
         .then(res => res.json())
         .then(res =>{ 
-        console.log(res)
         dispatch({ type: "LOGIN_PATIENT", payload: res})
         localStorage.setItem("token", res.jwt)
         localStorage.setItem("user", "patient")
-        })
+        
     }
+        )}
 
 }
 
@@ -78,12 +78,20 @@ export function signUp(userInfo){
         })
         .then( r => r.json())
         .then( data => {
-            // dispatch(setCurrentUser(data.user))
+            if(data.error === "failed to create patient"){
+                Swal.fire({
+                    title: 'Unable to Create Patient!',
+                    text: `${data.error}`,
+                    icon: 'error',
+                    confirmButtonText: 'Back'
+                })
+            } else {
             localStorage.setItem("jwt", data.jwt)
             Swal.fire({
                 title: 'Patient Created',
                 text: `Patient was added successfully!`,
                 icon: 'success'})
+            }
         })
 
         

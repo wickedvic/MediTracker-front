@@ -13,6 +13,7 @@ import { sessionUserAction } from './redux/actions'
 import PatientContainerSpecs from './containers/PatientContainerSpecs/PatientContainerSpecs';
 import PtEdit from './components/PtEdit/PtEdit';
 import SignupPage from './containers/SignupPage/SignupPage.js'
+import CalendarPage from './containers/CalendarPage/CalendarPage.js'
 
 
 
@@ -58,7 +59,7 @@ function App(props) {
       <Route path="/patientlogin" render={() =>(<PatLogin/>)}/>
       <Route path="/mymeds" render={() => (<PatientContainer/>)}/>
       <Route path="/signup" render={() =>(<SignupPage/>)}/>
-    
+      <Route path="/calendar" render={() =>(<CalendarPage/>)}/>
       < Route path="/profile/edit" render={() => ( < PtEdit />)}/>
 
       <Route path="/" render={() =>(<LandingContainer/>)}/>

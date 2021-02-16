@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 0,
-    paddingLeft: "50%",
+    paddingLeft: "40%",
   },
   navMargin: {
     marginBottom: "25px",

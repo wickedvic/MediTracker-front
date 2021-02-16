@@ -44,6 +44,11 @@ const NavBar = (props) => {
   const redirectEditPt = () => {
     history.push("/profile/edit")
   }
+
+  const redirectCalendar = () => {
+    history.push("/calendar")
+  }
+
   
     return (
       
@@ -54,7 +59,7 @@ const NavBar = (props) => {
        <Typography className={classes.title}> 
        <Button color="inherit" onClick={clickHandler}>Manage Patients</Button> 
         <Button color="inherit" onClick={redirectPatientCreate}>Add A Patient</Button>
-           
+        <Button color="inherit" onClick={redirectCalendar}>Calendar</Button>
           </Typography >
           : null}
 
@@ -62,6 +67,7 @@ const NavBar = (props) => {
             <Typography className={classes.title}> 
                 <Button color="inherit" onClick={redirectUserMeds}>Manage Meds</Button> 
                 <Button color="inherit" onClick={redirectEditPt}>Edit Profile</Button>
+                {/* <Button color="inherit" onClick={redirectCalendar}>Calendar</Button> */}
             </Typography> 
             : null}
 

@@ -62,7 +62,7 @@ class PtMed extends Component {
      <img className={this.state.taken? classes.image_taken : classes.image} src={this.props.med.med.image_url}/>
      </Typography>
      <Typography variant="body2" color="textSecondary" component="p">
-     <b>{this.props.med.med.name}</b><b> <br/> {this.props.med.pill_count} pill(s) {this.props.med.med.pill_color} IN COLOR</b>,<br/> {this.props.med.notes ? <><b>Doctor's notes: </b>   {this.props.med.notes}</> : null} <br/> <Checkbox  onClick={this.patchHandler}>{this.state.taken ? fireWorks()  : "Mark as taken"  }</Checkbox >
+     <b>{this.props.med.med.name}</b><b> <br/> <ul>{this.props.med.pill_count} pill/s that are {this.props.med.med.pill_color} in COLOR </ul> </b> <ul>{this.props.med.notes ? <><b>Doctor's notes: </b>   {this.props.med.notes}</> : null} </ul><Checkbox  onClick={this.patchHandler}>{this.state.taken ? fireWorks()  : "Mark as taken"  }</Checkbox >
      </Typography>
    </CardContent>
  </CardActionArea>
