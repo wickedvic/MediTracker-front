@@ -81,7 +81,7 @@ class MdMed extends Component {
                         <br></br>
                         <TextField onChange={this.formEdit} id="time" label="Select Time" name="time" value={this.state.time} select>
                             <MenuItem value="morning">Morning</MenuItem>
-                            <MenuItem value="afternoon ">Noon</MenuItem>
+                            <MenuItem value="afternoon ">Afternoon</MenuItem>
                             <MenuItem value="evening ">Evening</MenuItem>
                         </TextField>
 

@@ -177,13 +177,13 @@ export default class View extends React.Component {
   showAddAlert() {
     this.setState({alert: 'Note Added!'})
     
-    let hideAlert = setTimeout(this.hideAlert.bind(this), 1000);
+    let hideAlert = setTimeout(this.hideAlert.bind(this), 2000);
   }
       
   showDeleteAlert() {
     this.setState({alert: 'Note Deleted!'})
     
-    let hideAlert = setTimeout(this.hideAlert.bind(this), 1000);
+    let hideAlert = setTimeout(this.hideAlert.bind(this), 2000);
   }
  
   hideAlert() {

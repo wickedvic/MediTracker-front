@@ -59,7 +59,7 @@ export default class CalendarPage extends React.Component {
               checked={this.state.weekendsVisible}
               onChange={this.handleWeekendsToggle}
             ></input>
-            toggle weekends
+            Show Weekends
           </label>
         </div>
         <div className='demo-app-sidebar-section'>
@@ -122,6 +122,7 @@ function renderSidebarEvent(event) {
   return (
     <li key={event.id}>
       <b>{formatDate(event.start, {year: 'numeric', month: 'short', day: 'numeric'})}</b>
+      &nbsp;&nbsp;
       <i>{event.title}</i>
     </li>
   )

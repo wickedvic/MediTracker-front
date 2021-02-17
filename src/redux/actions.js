@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 
 
 export function docLoginAction(doc, dispatch) {
+    let timerInterval
     return function(){
         const config = {
         method: "POST",

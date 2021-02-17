@@ -40,8 +40,9 @@ const LoginContainer = (props) => {
             <LocalHospitalIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-          <p>Welcome To MEDI-TRACKER!</p>
-          <p>Choose either of the following...</p>
+          <h3>Welcome To MEDI-TRACKER!</h3>
+          <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose either of the following...</h4>
+          <br></br>
           </Typography>
           
           <Button className={classes.button} variant="contained" color="primary" onClick={docClick}>Doctor</Button>

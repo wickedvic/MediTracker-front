@@ -15,6 +15,7 @@ import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
+
 const sample = {
     width: '40vw'
 }
