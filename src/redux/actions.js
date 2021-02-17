@@ -17,9 +17,23 @@ export function docLoginAction(doc, dispatch) {
         fetch('http://localhost:3000/api/v1/login', config)
         .then(res => res.json())
         .then(res =>{ 
+            console.log(res.message)
+            if(res.message === "Invalid username or password"){
+                window.history.back()
+                Swal.fire({
+                    title: 'Either Username or Password Is Incorrect!',
+                    text: `${res.message}`,
+                    icon: 'error',
+                    confirmButtonText: 'Back'
+                    
+                })
+            } else {
+
+
+
         dispatch({ type: "LOGIN_DOCTOR", payload: res})
         localStorage.setItem("token", res.jwt)
-        localStorage.setItem("user", "doctor")
+        localStorage.setItem("user", "doctor")}
         })
     }
 }
@@ -37,9 +51,21 @@ export function ptLoginAction(pt, dispatch) {
         fetch('http://localhost:3000/api/v1/patientlogin', config)
         .then(res => res.json())
         .then(res =>{ 
+
+            if(res.message === "Invalid username or password"){
+                window.history.back()
+                Swal.fire({
+                    title: 'Either Username or Password Is Incorrect!',
+                    text: `${res.message}`,
+                    icon: 'error',
+                    confirmButtonText: 'Back'
+                    
+                })
+            } else {
+
         dispatch({ type: "LOGIN_PATIENT", payload: res})
         localStorage.setItem("token", res.jwt)
-        localStorage.setItem("user", "patient")
+        localStorage.setItem("user", "patient")}
         
     }
         )}

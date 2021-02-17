@@ -112,7 +112,7 @@ export default class CalendarPage extends React.Component {
 function renderEventContent(eventInfo) {
   return (
     <>
-      <b>{eventInfo.timeText}</b>
+      <b>{eventInfo.timeText}</b> &nbsp;
       <i>{eventInfo.event.title}</i>
     </>
   )
